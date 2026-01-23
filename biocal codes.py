@@ -219,7 +219,7 @@ elif st.session_state.page == "Molarity (if solvent in Kg)":
 # =====================================================
 # MOLALITY if solvent in Liters
 # =====================================================
-elif st.session_state.page == "Molarity (if solvent in Liters)":
+elif st.session_state.page == "Molarity(if solvent in Liters)":
     st.caption("Formula: M = moles / volume (L)")
 
     moles = st.number_input("Moles of solute (mol)", min_value=0.0)
