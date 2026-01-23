@@ -192,7 +192,7 @@ elif st.session_state.page == "Molarity → Normality":
 # =====================================================
 # MOLALITY
 # =====================================================
-elif st.session_state.page == "Molality":
+elif st.session_state.page == "Molality if solvent is in kg":
     n=st.number_input("Moles")
     kg=st.number_input("Solvent mass (kg)")
     if st.button("Calculate"):
@@ -201,11 +201,41 @@ elif st.session_state.page == "Molality":
 # =====================================================
 # PERCENTAGE
 # =====================================================
-elif st.session_state.page == "Percentage Solution":
-    a=st.number_input("Solute")
-    b=st.number_input("Solution")
-    if st.button("Calculate"):
-        st.success((a/b)*100)
+def percentage_solution():
+    st.subheader("🧪 Percentage Solutions")
+
+    option = st.selectbox(
+        "Select type",
+        ["%(w/v)", "%(v/v)", "%(m/v)"]
+    )
+
+    if option == "%(w/v)":
+        grams = st.number_input("Grams of solute (g)", min_value=0.0)
+        volume = st.number_input("Volume of solution (mL)", min_value=0.0)
+
+        if st.button("Calculate"):
+            if volume > 0:
+                percent = (grams / volume) * 100
+                st.success(f"%(w/v) = {percent:.2f} %")
+
+    elif option == "%(v/v)":
+        vol_solute = st.number_input("Volume of solute (mL)", min_value=0.0)
+        vol_solution = st.number_input("Volume of solution (mL)", min_value=0.0)
+
+        if st.button("Calculate"):
+            if vol_solution > 0:
+                percent = (vol_solute / vol_solution) * 100
+                st.success(f"%(v/v) = {percent:.2f} %")
+
+    elif option == "%(m/v)":
+        mass = st.number_input("Mass of solute (g)", min_value=0.0)
+        volume = st.number_input("Volume of solution (mL)", min_value=0.0)
+
+        if st.button("Calculate"):
+            if volume > 0:
+                percent = (mass / volume) * 100
+                st.success(f"%(m/v) = {percent:.2f} %")
+
 
 # =====================================================
 # MOLES
