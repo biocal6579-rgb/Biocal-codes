@@ -201,39 +201,38 @@ elif st.session_state.page == "Molality if solvent is in kg":
 # =====================================================
 # PERCENTAGE
 # =====================================================
-    st.subheader("Percentage Solutions")
+  elif tool == "🧪 Percentage Solutions":
+    st.subheader("🧪 Percentage Solutions")
 
-    option = st.selectbox(
+    option = st.radio(
         "Select type",
-        ["%(w/v)", "%(v/v)", "%(m/v)"]
+        ["%(w/v)", "%(v/v)", "%(m/v)"],
+        key="percent_type"
     )
 
     if option == "%(w/v)":
-        grams = st.number_input("Grams of solute (g)", min_value=0.0)
-        volume = st.number_input("Volume of solution (mL)", min_value=0.0)
+        grams = st.number_input("Grams of solute (g)", key="wv_g")
+        volume = st.number_input("Volume of solution (mL)", key="wv_v")
 
-        if st.button("Calculate"):
+        if st.button("Calculate", key="wv_btn"):
             if volume > 0:
-                percent = (grams / volume) * 100
-                st.success(f"%(w/v) = {percent:.2f} %")
+                st.success(f"%(w/v) = {(grams/volume)*100:.2f} %")
 
     elif option == "%(v/v)":
-        vol_solute = st.number_input("Volume of solute (mL)", min_value=0.0)
-        vol_solution = st.number_input("Volume of solution (mL)", min_value=0.0)
+        vol_solute = st.number_input("Volume of solute (mL)", key="vv_s")
+        vol_solution = st.number_input("Volume of solution (mL)", key="vv_t")
 
-        if st.button("Calculate"):
+        if st.button("Calculate", key="vv_btn"):
             if vol_solution > 0:
-                percent = (vol_solute / vol_solution) * 100
-                st.success(f"%(v/v) = {percent:.2f} %")
+                st.success(f"%(v/v) = {(vol_solute/vol_solution)*100:.2f} %")
 
     elif option == "%(m/v)":
-        mass = st.number_input("Mass of solute (g)", min_value=0.0)
-        volume = st.number_input("Volume of solution (mL)", min_value=0.0)
+        mass = st.number_input("Mass of solute (g)", key="mv_m")
+        volume = st.number_input("Volume of solution (mL)", key="mv_v")
 
-        if st.button("Calculate"):
+        if st.button("Calculate", key="mv_btn"):
             if volume > 0:
-                percent = (mass / volume) * 100
-                st.success(f"%(m/v) = {percent:.2f} %")
+                st.success(f"%(m/v) = {(mass/volume)*100:.2f} %")
 
 
 # =====================================================
