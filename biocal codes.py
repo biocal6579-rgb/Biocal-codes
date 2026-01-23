@@ -195,8 +195,8 @@ elif st.session_state.page == "Molarity → Normality":
 # =====================================================
 # MOLALITY if solvent in kg
 # =====================================================
-elif st.session_state.page == "📊 Molality":
-    st.subheader("📊 Molality (solvent in kg)")
+elif st.session_state.page == "Molarity (if solvent in Kg)":
+    st.subheader("Molarity (if solvent in Kg)")
     st.caption("Formula: m = moles / mass of solvent (kg)")
 
     n = st.number_input(
