@@ -140,6 +140,7 @@ elif st.session_state.page == "C1V1 Dilution":
 # MOLARITY
 # =====================================================
 elif st.session_state.page == "Molarity (from moles)":
+
     n=st.number_input("Moles")
     V=st.number_input("Volume (L)")
     if st.button("Calculate"):
@@ -170,10 +171,27 @@ elif st.session_state.page == "Molarity by dilution":
 # NORMALITY
 # =====================================================
 elif st.session_state.page == "Normality":
-    ge=st.number_input("Gram equivalents")
-    V=st.number_input("Volume (L)")
-    if st.button("Calculate"):
-        st.success(ge/V)
+    st.subheader("Normality")
+    st.caption("Formula: N = gram equivalents / volume (L)")
+
+    ge = st.number_input(
+        "Gram equivalents",
+        min_value=0.0,
+        key="normality_ge"
+    )
+
+    V = st.number_input(
+        "Volume of solution (L)",
+        min_value=0.0,
+        key="normality_volume"
+    )
+
+    if st.button("Calculate Normality", key="normality_btn"):
+        if V == 0:
+            st.error("Volume cannot be zero")
+        else:
+            st.success(f"Normality = {ge / V:.4f} N")
+
 
 elif st.session_state.page == "Normality by dilution":
     N1=st.number_input("N₁",0.0)
