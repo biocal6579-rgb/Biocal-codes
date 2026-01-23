@@ -201,7 +201,7 @@ elif st.session_state.page == "Molality if solvent is in kg":
 # =====================================================
 # PERCENTAGE
 # =====================================================
- st.set_page_config(page_title="Percentage Solution", layout="centered")
+st.set_page_config(page_title="Percentage Solution", layout="centered")
 st.title("🧪 Percentage Solution Calculator")
 
 st.markdown("### Select Percentage Type")
