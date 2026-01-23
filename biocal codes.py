@@ -55,7 +55,7 @@ if st.session_state.page == "home":
     tools = [
         "Mass", "Volume", "Temperature", "Density",
         "C1V1 Dilution",
-        "Molarity (from moles)", "Molarity (from grams)", "Molarity by dilution",
+        "Molarity (from moles)", "Molarity (from grams)", "Molarity (if solvent in Kg)","Molarity(if solvent in Liters)","Molarity by dilution",
         "Normality", "Normality by dilution", "Molarity → Normality",
         "Molality",
         "Percentage Solution",
@@ -163,19 +163,7 @@ elif st.session_state.page == "Molarity by dilution":
         elif M2==0: st.success((M1*V1)/V2)
         elif V2==0: st.success((M1*V1)/M2)
 
-elif st.session_state.page == "Molarity (if solut is in Liters)":
-    st.subheader("📏 Molarity (from moles)")
-    st.caption("Formula: M = moles / volume (L)")
 
-    moles = st.number_input("Moles of solute (mol)", min_value=0.0)
-    volume = st.number_input("Volume of solvent (L)", min_value=0.0)
-
-    if st.button("Calculate Molarity"):
-        if volume == 0:
-            st.error("Volume cannot be zero")
-        else:
-            M = moles / volume
-            st.success(f"Molarity = {M:.3f} M")
 
 
 # =====================================================
@@ -205,13 +193,31 @@ elif st.session_state.page == "Molarity → Normality":
         st.success(M*n)
 
 # =====================================================
-# MOLALITY
+# MOLALITY if solvent in kg
 # =====================================================
-elif st.session_state.page == "Molality if solvent is in kg":
+elif st.session_state.page == "Molality (if solvent in kg)":
     n=st.number_input("Moles")
     kg=st.number_input("Solvent mass (kg)")
     if st.button("Calculate"):
         st.success(n/kg)
+# =====================================================
+# MOLALITY if solvent in Liters
+# =====================================================
+elif st.session_state.page == "Molarity (if solvent in Liters)":
+    st.caption("Formula: M = moles / volume (L)")
+
+    moles = st.number_input("Moles of solute (mol)", min_value=0.0)
+    volume = st.number_input("Volume of solvent (L)", min_value=0.0)
+
+    if st.button("Calculate Molarity"):
+        if volume == 0:
+            st.error("Volume cannot be zero")
+        else:
+            M = moles / volume
+            st.success(f"Molarity = {M:.3f} M")
+
+
+
 
 # =====================================================
 # PERCENTAGE
