@@ -163,6 +163,21 @@ elif st.session_state.page == "Molarity by dilution":
         elif M2==0: st.success((M1*V1)/V2)
         elif V2==0: st.success((M1*V1)/M2)
 
+elif st.session_state.page == "Molarity (if solut is in Liters)":
+    st.subheader("📏 Molarity (from moles)")
+    st.caption("Formula: M = moles / volume (L)")
+
+    moles = st.number_input("Moles of solute (mol)", min_value=0.0)
+    volume = st.number_input("Volume of solvent (L)", min_value=0.0)
+
+    if st.button("Calculate Molarity"):
+        if volume == 0:
+            st.error("Volume cannot be zero")
+        else:
+            M = moles / volume
+            st.success(f"Molarity = {M:.3f} M")
+
+
 # =====================================================
 # NORMALITY
 # =====================================================
