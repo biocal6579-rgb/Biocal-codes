@@ -195,11 +195,27 @@ elif st.session_state.page == "Molarity → Normality":
 # =====================================================
 # MOLALITY if solvent in kg
 # =====================================================
-elif st.session_state.page == "Molality (if solvent in kg)":
-    n=st.number_input("Moles")
-    kg=st.number_input("Solvent mass (kg)")
-    if st.button("Calculate"):
-        st.success(n/kg)
+elif st.session_state.page == "📊 Molality":
+    st.subheader("📊 Molality (solvent in kg)")
+    st.caption("Formula: m = moles / mass of solvent (kg)")
+
+    n = st.number_input(
+        "Moles of solute (mol)",
+        min_value=0.0,
+        key="molality_moles"
+    )
+
+    kg = st.number_input(
+        "Mass of solvent (kg)",
+        min_value=0.0,
+        key="molality_kg"
+    )
+
+    if st.button("Calculate Molality", key="molality_btn"):
+        if kg == 0:
+            st.error("Solvent mass cannot be zero")
+        else:
+            st.success(f"Molality = {n / kg:.4f} m")
 # =====================================================
 # MOLALITY if solvent in Liters
 # =====================================================
