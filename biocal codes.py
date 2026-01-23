@@ -201,8 +201,7 @@ elif st.session_state.page == "Molality if solvent is in kg":
 # =====================================================
 # PERCENTAGE
 # =====================================================
-def percentage_solution():
-    st.subheader("🧪 Percentage Solutions")
+    st.subheader("Percentage Solutions")
 
     option = st.selectbox(
         "Select type",
