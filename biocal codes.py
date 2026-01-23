@@ -201,39 +201,51 @@ elif st.session_state.page == "Molality if solvent is in kg":
 # =====================================================
 # PERCENTAGE
 # =====================================================
-  elif tool == "🧪 Percentage Solutions":
-    st.subheader("🧪 Percentage Solutions")
+ st.set_page_config(page_title="Percentage Solution", layout="centered")
 
-    option = st.radio(
-        "Select type",
-        ["%(w/v)", "%(v/v)", "%(m/v)"],
-        key="percent_type"
-    )
+st.title("🧪 Percentage Solution Calculator")
 
-    if option == "%(w/v)":
-        grams = st.number_input("Grams of solute (g)", key="wv_g")
-        volume = st.number_input("Volume of solution (mL)", key="wv_v")
+st.markdown("### Select Percentage Type")
 
-        if st.button("Calculate", key="wv_btn"):
-            if volume > 0:
-                st.success(f"%(w/v) = {(grams/volume)*100:.2f} %")
+ptype = st.selectbox(
+    "Percentage Type",
+    ["%(w/v)", "%(v/v)", "%(m/v)"]
+)
 
-    elif option == "%(v/v)":
-        vol_solute = st.number_input("Volume of solute (mL)", key="vv_s")
-        vol_solution = st.number_input("Volume of solution (mL)", key="vv_t")
+st.markdown("---")
 
-        if st.button("Calculate", key="vv_btn"):
-            if vol_solution > 0:
-                st.success(f"%(v/v) = {(vol_solute/vol_solution)*100:.2f} %")
+if ptype == "%(w/v)":
+    grams = st.number_input("Grams of solute (g)", min_value=0.0)
+    volume = st.number_input("Volume of solution (mL)", min_value=0.0)
 
-    elif option == "%(m/v)":
-        mass = st.number_input("Mass of solute (g)", key="mv_m")
-        volume = st.number_input("Volume of solution (mL)", key="mv_v")
+    if st.button("Calculate %(w/v)"):
+        if volume == 0:
+            st.error("Volume cannot be zero")
+        else:
+            percent = (grams / volume) * 100
+            st.success(f"%(w/v) = {percent:.2f} %")
 
-        if st.button("Calculate", key="mv_btn"):
-            if volume > 0:
-                st.success(f"%(m/v) = {(mass/volume)*100:.2f} %")
+elif ptype == "%(v/v)":
+    vol_solute = st.number_input("Volume of solute (mL)", min_value=0.0)
+    vol_solution = st.number_input("Volume of solution (mL)", min_value=0.0)
 
+    if st.button("Calculate %(v/v)"):
+        if vol_solution == 0:
+            st.error("Solution volume cannot be zero")
+        else:
+            percent = (vol_solute / vol_solution) * 100
+            st.success(f"%(v/v) = {percent:.2f} %")
+
+elif ptype == "%(m/v)":
+    mass = st.number_input("Mass of solute (g)", min_value=0.0)
+    volume = st.number_input("Volume of solution (mL)", min_value=0.0)
+
+    if st.button("Calculate %(m/v)"):
+        if volume == 0:
+            st.error("Volume cannot be zero")
+        else:
+            percent = (mass / volume) * 100
+            st.success(f"%(m/v) = {percent:.2f} %")
 
 # =====================================================
 # MOLES
