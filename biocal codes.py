@@ -121,7 +121,7 @@ elif st.session_state.page == "Volume":
 
     if st.button("Calculate"):
         result = (value * factors[f]) / factors[t]
-        st.success(f"{result:.6f} {t}")
+        st.success(f"Result={result:.6f} {t}")
 
 
 
@@ -144,16 +144,16 @@ elif st.session_state.page == "Temperature":
 
     if st.button("Convert", key="temp_btn"):
         if mode == "C → K":
-            st.success(f"{temp + 273.15:.2f} K")
+            st.success(f"result={temp + 273.15:.2f} K")
 
         elif mode == "K → C":
-            st.success(f"{temp - 273.15:.2f} °C")
+            st.success(f"result={temp - 273.15:.2f} °C")
 
         elif mode == "C → F":
-            st.success(f"{temp * 9/5 + 32:.2f} °F")
+            st.success(f"result={temp * 9/5 + 32:.2f} °F")
 
         elif mode == "F → C":
-            st.success(f"{((temp - 32) * 5/9):.2f} °C")
+            st.success(f"result={((temp - 32) * 5/9):.2f} °C")
 
 # =====================================================
 # DENSITY
