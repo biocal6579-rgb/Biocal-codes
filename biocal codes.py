@@ -417,22 +417,73 @@ elif st.session_state.page =="Moles Calculator":
 # DNA RNA
 # =====================================================
 elif st.session_state.page == "DNA Concentration":
-    A=st.number_input("A260")
-    d=st.number_input("Dilution",1.0)
-    if st.button("Calculate"):
-        st.success(A*50*d)
+
+    st.subheader("DNA Concentration")
+    st.caption("Formula: DNA (µg/mL) = A260 × 50 × Dilution factor")
+
+    A = st.number_input(
+        "Absorbance at 260 nm (A260)",
+        min_value=0.0,
+        key="dna_a260"
+    )
+
+    d = st.number_input(
+        "Dilution factor",
+        min_value=1.0,
+        key="dna_dilution"
+    )
+
+    if st.button("Calculate DNA Concentration", key="dna_btn"):
+        result = A * 50 * d
+        st.success(f"DNA Concentration = {result:.2f} µg/mL")
+
 
 elif st.session_state.page == "RNA Concentration":
-    A=st.number_input("A260")
-    d=st.number_input("Dilution",1.0)
-    if st.button("Calculate"):
-        st.success(A*40*d)
+
+    st.subheader("RNA Concentration")
+    st.caption("Formula: RNA (µg/mL) = A260 × 40 × Dilution factor")
+
+    A = st.number_input(
+        "Absorbance at 260 nm (A260)",
+        min_value=0.0,
+        key="rna_a260"
+    )
+
+    d = st.number_input(
+        "Dilution factor",
+        min_value=1.0,
+        key="rna_dilution"
+    )
+
+    if st.button("Calculate RNA Concentration", key="rna_btn"):
+        result = A * 40 * d
+        st.success(f"RNA Concentration = {result:.2f} µg/mL")
+
 
 elif st.session_state.page == "DNA Purity":
-    a260=st.number_input("A260")
-    a280=st.number_input("A280")
-    if st.button("Calculate"):
-        st.success(a260/a280)
+
+    st.subheader("🧬 DNA Purity")
+    st.caption("Formula: Purity ratio = A260 / A280")
+
+    a260 = st.number_input(
+        "Absorbance at 260 nm (A260)",
+        min_value=0.0,
+        key="purity_a260"
+    )
+
+    a280 = st.number_input(
+        "Absorbance at 280 nm (A280)",
+        min_value=0.0,
+        key="purity_a280"
+    )
+
+    if st.button("Calculate Purity", key="purity_btn"):
+        if a280 == 0:
+            st.error("A280 cannot be zero")
+        else:
+            ratio = a260 / a280
+            st.success(f"DNA Purity (A260/A280) = {ratio:.2f} (unitless)")
+
 
 # =====================================================
 # OSMOTIC
