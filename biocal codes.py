@@ -231,7 +231,7 @@ elif st.session_state.page == "Molarity (from grams)":
             st.error("Molecular weight and volume cannot be zero")
         else:
             grams = M * MW * V
-            st.success(f"Grams required = {grams:.4f} g"
+            st.success(f"Grams required = {grams:.4f} g")
 
 
 elif st.session_state.page == "Molarity by dilution":
