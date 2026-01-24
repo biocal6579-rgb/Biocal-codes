@@ -83,7 +83,7 @@ if st.session_state.page != "home":
 # MASS
 # =====================================================
 elif st.session_state.page == "Mass":
-    st.subheader("🏋️ Mass Converter")
+    st.subheader("Mass")
     st.caption("Convert between kg, g, and mg")
 
     value = st.number_input("Enter value", min_value=0.0)
