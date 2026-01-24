@@ -205,7 +205,7 @@ elif st.session_state.page == "Molarity (from moles)":
 
 
 elif st.session_state.page == "Molarity (from grams)":
-    st.caption("Formula: M = (mass ÷ molecular weight) ÷ volume (L)")
+    st.caption("Formula: M = (mass * molecular weight) * volume (L)")
     g = st.number_input("Mass (g)")
     mm = st.number_input("Molecular weight")
     V = st.number_input("Volume (L)")
