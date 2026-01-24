@@ -388,11 +388,30 @@ elif st.session_state.page == "Percentage Solution":
 # =====================================================
 # MOLES
 # =====================================================
-elif st.session_state.page == "Moles Calculator":
-    g=st.number_input("Mass (g)")
-    mm=st.number_input("Molar mass")
-    if st.button("Calculate"):
-        st.success(g/mm)
+elif st.session_state.page =="Moles Calculator":
+
+    st.subheader(" Moles Calculator")
+    st.caption("Formula: moles (n) = mass (g) / molar mass (g·mol⁻¹)")
+
+    g = st.number_input(
+        "Mass of substance (g)",
+        min_value=0.0,
+        key="moles_mass"
+    )
+
+    mm = st.number_input(
+        "Molar mass (g/mol)",
+        min_value=0.0,
+        key="moles_mm"
+    )
+
+    if st.button("Calculate Moles", key="moles_btn"):
+        if mm == 0:
+            st.error("Molar mass cannot be zero")
+        else:
+            result = g / mm
+            st.success(f"Moles = {result:.4f} mol")
+
 
 # =====================================================
 # DNA RNA
