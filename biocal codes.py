@@ -83,16 +83,22 @@ if st.session_state.page != "home":
 # MASS
 # =====================================================
 if st.session_state.page == "Mass":
-    st.subheader(" Mass Converter")
+    st.subheader("Mass Converter")
 
     value = st.number_input("Value", min_value=0.0)
     f = st.selectbox("From", ["kg", "g", "mg"])
     t = st.selectbox("To", ["kg", "g", "mg"])
 
-    factors = {"kg": 1000, "g": 1, "mg": 0.001}
+    factors = {
+        "kg": 1000,
+        "g": 1,
+        "mg": 0.001
+    }
 
     if st.button("Calculate"):
-        st.success((value * factors[f]) / factors[t])
+        result = (value * factors[f]) / factors[t]
+        st.success(f"Result = {result:.4f} {t}")
+)
 
 
 
