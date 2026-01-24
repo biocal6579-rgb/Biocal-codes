@@ -159,10 +159,18 @@ elif st.session_state.page == "Temperature":
 # DENSITY
 # =====================================================
 elif st.session_state.page == "Density":
-    m = st.number_input("Mass (g)")
-    v = st.number_input("Volume (mL)")
+    st.subheader(" Density")
+
+    m = st.number_input("Mass (g)", min_value=0.0)
+    v = st.number_input("Volume (mL)", min_value=0.0)
+
     if st.button("Calculate"):
-        st.success(m/v)
+        if v == 0:
+            st.error("Volume cannot be zero")
+        else:
+            density = m / v
+            st.success(f"Density = {density:.4f} g/mL")
+
 
 # =====================================================
 # C1V1
