@@ -98,7 +98,7 @@ if st.session_state.page == "Mass":
     if st.button("Calculate"):
         result = (value * factors[f]) / factors[t]
         st.success(f"Result = {result:.4f} {t}")
-)
+
 
 
 
