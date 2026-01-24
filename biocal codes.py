@@ -205,12 +205,33 @@ elif st.session_state.page == "Molarity (from moles)":
 
 
 elif st.session_state.page == "Molarity (from grams)":
-    st.caption("Formula: M = (mass * molecular weight) * volume (L)")
-    g = st.number_input("Mass (g)")
-    mm = st.number_input("Molecular weight")
-    V = st.number_input("Volume (L)")
-    if st.button("Calculate"):
-        st.success((g / mm) / V)
+    st.subheader(" Grams of Substance to Add")
+    st.caption("Formula: grams = Molarity × Molecular weight × Volume (L)")
+
+    M = st.number_input(
+        "Molarity (M)",
+        min_value=0.0,
+        key="grams_M"
+    )
+
+    MW = st.number_input(
+        "Molecular weight (g/mol)",
+        min_value=0.0,
+        key="grams_MW"
+    )
+
+    V = st.number_input(
+        "Volume of solution (L)",
+        min_value=0.0,
+        key="grams_V"
+    )
+
+    if st.button("Calculate Grams", key="grams_btn"):
+        if MW == 0 or V == 0:
+            st.error("Molecular weight and volume cannot be zero")
+        else:
+            grams = M * MW * V
+            st.success(f"Grams required = {grams:.4f} g"
 
 
 elif st.session_state.page == "Molarity by dilution":
