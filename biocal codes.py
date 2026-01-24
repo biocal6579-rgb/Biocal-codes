@@ -83,7 +83,7 @@ if st.session_state.page != "home":
 # MASS
 # =====================================================
 if st.session_state.page == "Mass":
-    st.subheader("🏋️ Mass Converter")
+    st.subheader(" Mass Converter")
 
     value = st.number_input("Value", min_value=0.0)
     f = st.selectbox("From", ["kg", "g", "mg"])
@@ -349,10 +349,13 @@ elif st.session_state.page == "Osmotic Pressure":
 # pH
 # =====================================================
 elif st.session_state.page == "pH":
-    h=st.number_input("[H⁺]")
-    if st.button("Calculate"):
-        st.success(-math.log10(h))
+    st.subheader("🧪 pH Calculator")
+    st.caption("Formula: pH = −log₁₀[H⁺]")
 
+    h = st.number_input("[H⁺] concentration", min_value=1e-14, key="ph_h")
+
+    if st.button("Calculate pH", key="ph_btn"):
+        st.success(f"pH = {-math.log10(h):.4f}")
 # =====================================================
 # HARDY
 # =====================================================
