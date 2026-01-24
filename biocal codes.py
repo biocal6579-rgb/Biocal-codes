@@ -205,11 +205,12 @@ elif st.session_state.page == "Molarity (from moles)":
 
 
 elif st.session_state.page == "Molarity (from grams)":
-    g=st.number_input("molarity")
-    mm=st.number_input("Molecular weight ")
-    V=st.number_input("Volume (L)")
+    g = st.number_input("Mass (g)")
+    mm = st.number_input("Molecular weight")
+    V = st.number_input("Volume (L)")
     if st.button("Calculate"):
-        st.success((g/mm)/V)
+        st.success((g / mm) / V)
+
 
 elif st.session_state.page == "Molarity by dilution":
     M1=st.number_input("M₁",0.0)
