@@ -121,13 +121,31 @@ elif st.session_state.page == "Volume":
 # TEMPERATURE
 # =====================================================
 elif st.session_state.page == "Temperature":
-    temp = st.number_input("Temperature")
-    mode = st.selectbox("Conversion", ["C→K","K→C","C→F","F→C"])
-    if st.button("Convert"):
-        if mode=="C→K": st.success(temp+273.15)
-        elif mode=="K→C": st.success(temp-273.15)
-        elif mode=="C→F": st.success(temp*9/5+32)
-        elif mode=="F→C": st.success((temp-32)*5/9)
+    st.subheader("Temperature Converter")
+
+    temp = st.number_input(
+        "Temperature value",
+        key="temp_value"
+    )
+
+    mode = st.selectbox(
+        "Conversion",
+        ["C → K", "K → C", "C → F", "F → C"],
+        key="temp_mode"
+    )
+
+    if st.button("Convert", key="temp_btn"):
+        if mode == "C → K":
+            st.success(f"{temp + 273.15:.2f} K")
+
+        elif mode == "K → C":
+            st.success(f"{temp - 273.15:.2f} °C")
+
+        elif mode == "C → F":
+            st.success(f"{temp * 9/5 + 32:.2f} °F")
+
+        elif mode == "F → C":
+            st.success(f"{((temp - 32) * 5/9):.2f} °C")
 
 # =====================================================
 # DENSITY
@@ -273,7 +291,7 @@ elif st.session_state.page == "Molarity(if solvent in Liters)":
 # PERCENTAGE
 # =====================================================
 elif st.session_state.page == "Percentage Solution":
-    st.subheader("🧪 Percentage Solution")
+    st.subheader(" Percentage Solution")
 
     ptype = st.selectbox(
         "Select Percentage Type",
