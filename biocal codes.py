@@ -286,10 +286,15 @@ elif st.session_state.page == "Normality by dilution":
         elif V2==0: st.success((N1*V1)/N2)
 
 elif st.session_state.page == "Molarity → Normality":
-    M=st.number_input("Molarity")
-    n=st.number_input("n-factor")
+    st.subheader("🔁 Molarity to Normality")
+    st.caption("Formula: N = M × n-factor")
+
+    M = st.number_input("Molarity (M)", min_value=0.0)
+    n = st.number_input("n-factor", min_value=0.0)
+
     if st.button("Calculate"):
-        st.success(M*n)
+        st.success(f"Normality = {M * n:.4f} N")
+
 
 # =====================================================
 # MOLALITY if solvent in kg
