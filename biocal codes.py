@@ -190,11 +190,19 @@ elif st.session_state.page == "C1V1 Dilution":
 # MOLARITY
 # =====================================================
 elif st.session_state.page == "Molarity (from moles)":
+    st.subheader("Molarity (from moles)")
+    st.caption("Formula: M = moles / volume (L)")
 
-    n=st.number_input("Moles")
-    V=st.number_input("Volume (L)")
+    n = st.number_input("Moles of solute (mol)", min_value=0.0)
+    V = st.number_input("Volume of solution (L)", min_value=0.0)
+
     if st.button("Calculate"):
-        st.success(n/V)
+        if V == 0:
+            st.error("Volume cannot be zero")
+        else:
+            M = n / V
+            st.success(f"Molarity = {M:.4f} mol/L (M)")
+
 
 elif st.session_state.page == "Molarity (from grams)":
     g=st.number_input("molarity")
