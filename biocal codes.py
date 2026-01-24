@@ -100,12 +100,22 @@ if st.session_state.page == "Mass":
 # VOLUME
 # =====================================================
 elif st.session_state.page == "Volume":
-    value = st.number_input("Value")
-    f = st.selectbox("From", ["L","mL","µL"])
-    t = st.selectbox("To", ["L","mL","µL"])
-    factors = {"L":1,"mL":0.001,"µL":0.000001}
+
+    value = st.number_input("Value", min_value=0.0)
+
+    f = st.selectbox("From", ["L", "mL", "µL"])
+
+    t = st.selectbox("To", ["L", "mL", "µL"])
+
+    factors = {
+        "L": 1,
+        "mL": 0.001,
+        "µL": 0.000001
+    }
+
     if st.button("Calculate"):
-        st.success((value*factors[f])/factors[t])
+        st.success((value * factors[f]) / factors[t])
+
 
 # =====================================================
 # TEMPERATURE
