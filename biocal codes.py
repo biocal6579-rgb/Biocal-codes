@@ -82,13 +82,38 @@ if st.session_state.page != "home":
 # =====================================================
 # MASS
 # =====================================================
-if st.session_state.page == "Mass":
-    value = st.number_input("Value")
-    f = st.selectbox("From", ["kg","g","mg"])
-    t = st.selectbox("To", ["kg","g","mg"])
-    factors = {"kg":1000,"g":1,"mg":0.001}
-    if st.button("Calculate"):
-        st.success((value*factors[f])/factors[t])
+elif st.session_state.page == "Mass":
+    st.subheader("Mass Converter")
+    st.caption("Convert between kilogram (kg), gram (g), and milligram (mg)")
+
+    value = st.number_input(
+        "Enter value",
+        min_value=0.0,
+        key="mass_value"
+    )
+
+    f = st.selectbox(
+        "From unit",
+        ["kg", "g", "mg"],
+        key="mass_from"
+    )
+
+    t = st.selectbox(
+        "To unit",
+        ["kg", "g", "mg"],
+        key="mass_to"
+    )
+
+    factors = {
+        "kg": 1000,
+        "g": 1,
+        "mg": 0.001
+    }
+
+    if st.button("Calculate Mass", key="mass_btn"):
+        result = (value * factors[f]) / factors[t]
+        st.success(f"Result = {result:.4f} {t}")
+
 
 # =====================================================
 # VOLUME
