@@ -37,9 +37,19 @@ def close_calculator():
 # =====================================================
 st.markdown("""
 <style>
-    .stApp, .main, div[data-testid="stAppViewContainer"] {
-        background-color: #OA1118 !important;
-        color: #1E293B;
+  .stApp, .main, div[data-testid="stAppViewContainer"], div[data-testid="stHeader"] {
+        background-color: #F4F9F6 !important;  /* Fresh, bright Biotech Mint tint background */
+        color: #1E293B !important;             /* Dark charcoal text for perfect readability */
+    }
+    
+    .section-title {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: #059669 !important;             /* Brilliant laboratory emerald green for headers */
+        text-transform: uppercase;
+        margin: 25px 0 12px 0;
+    }
     }
     .biocal-banner {
         background: linear-gradient(135deg, #38BDF8 0%, #34D399 100%);
@@ -78,14 +88,20 @@ st.markdown("""
         text-transform: uppercase;
         margin: 25px 0 12px 0;
     }
-    .calc-card {
-        background-color: #131C2E;
-        border: 1px solid #1E293B;
+   .calc-card {
+        background-color: #FFFFFF !important;  /* Crisp white cards */
+        border: 1px solid #E2E8F0 !important;  /* Light, elegant border */
         border-radius: 20px;
         padding: 22px;
         height: 140px;
         transition: all 0.25s ease;
         margin-bottom: 10px;
+    }
+    .calc-name {
+        font-size: 15px;
+        font-weight: 600;
+        color: #0F172A !important;             /* Deep slate text for the calculator names */
+        margin-bottom: 4px;
     }
     .calc-icon {
         font-size: 24px;
