@@ -37,8 +37,8 @@ def close_calculator():
 # =====================================================
 st.markdown("""
 <style>
-    .stApp {
-        background-color: #0B1315;
+    .stApp, .main, div[data-testid="stAppViewContainer"] {
+        background-color: #121214 !important;
         color: #E2E8F0;
     }
     .biocal-banner {
