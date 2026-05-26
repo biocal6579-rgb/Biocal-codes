@@ -19,6 +19,8 @@ if "page" not in st.session_state:
 
 def go_home():
     st.session_state.page = "home"
+    if "calc_selector" in st.session_state:
+        st.session_stste.calc_selector="Mass"
 
 def go_calc(name):
     st.session_state.page = name
@@ -65,11 +67,12 @@ if st.session_state.page == "home":
         "pH",
         "Hardy–Weinberg"
     ]
-
+    Key="calc_selector"
     choice = st.selectbox("Select Calculator", tools)
 
     if st.button("➡️ Open"):
         go_calc(choice)
+        st.rerun()
 
 # =====================================================
 # BACK BUTTON
@@ -77,6 +80,7 @@ if st.session_state.page == "home":
 if st.session_state.page != "home":
     if st.button("⬅️ Back"):
         go_home()
+        st.rerun()
     st.divider()
 
 # =====================================================
