@@ -82,6 +82,25 @@ st.markdown("""
     div[data-baseweb="input"] input {
         color: #0F172A !important;
     }
+    /* Clean white container layout panel with borders for input fields */
+
+.calc-container {
+
+background-color: #FFFFFF !important;
+
+border: 1px solid #E2E8F0 !important;
+
+border-radius: 24px;
+
+padding: 30px;
+
+box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
+
+margin-top: 15px;
+
+margin-bottom: 20px;
+
+}
     
     /* Section Headers */
     .section-title {
