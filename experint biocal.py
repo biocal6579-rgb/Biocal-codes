@@ -35,73 +35,74 @@ def close_calculator():
 # =====================================================
 # GLOBAL MODERN DARK THEME CSS
 # =====================================================
+# =====================================================
+# GLOBAL BIOTECH LIGHT THEME CSS
+# =====================================================
 st.markdown("""
 <style>
-  .stApp, .main, div[data-testid="stAppViewContainer"], div[data-testid="stHeader"] {
-        background-color: #F4F9F6 !important;  /* Fresh, bright Biotech Mint tint background */
-        color: #1E293B !important;             /* Dark charcoal text for perfect readability */
+    /* Main Background & Fonts - Modern Light Biotech Gradient */
+    .stApp, .main, div[data-testid="stAppViewContainer"], div[data-testid="stHeader"] {
+        background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 50%, #F0F9FF 100%) !important;
+        color: #1E293B !important;
     }
     
-    .section-title {
-        font-size: 13px;
-        font-weight: 700;
-        letter-spacing: 1px;
-        color: #059669 !important;             /* Brilliant laboratory emerald green for headers */
-        text-transform: uppercase;
-        margin: 25px 0 12px 0;
-    }
-    }
+    /* Header Display Banner */
     .biocal-banner {
-        background: linear-gradient(135deg, #38BDF8 0%, #34D399 100%);
+        background: linear-gradient(135deg, #0284C7 0%, #059669 100%);
         border-radius: 24px;
-        padding: 30px;
-        color: #0F172A;
+        padding: 35px 30px;
+        color: #FFFFFF;
         margin-bottom: 25px;
         position: relative;
-        box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.15);
+        box-shadow: 0 10px 25px -5px rgba(5, 150, 105, 0.15);
     }
     .biocal-banner h1 {
         margin: 0;
-        font-size: 32px;
-        font-weight: 800;
-        color: #0F172A !important;
+        font-size: 46px;
+        font-weight: 900;
+        font-family: 'Inter', 'Segoe UI', sans-serif;
+        letter-spacing: -1.5px;
+        color: #FFFFFF !important;
     }
     .biocal-banner p {
-        margin: 5px 0 0 0;
-        opacity: 0.9;
-        font-size: 15px;
-        font-weight: 500;
+        margin: 8px 0 0 0;
+        opacity: 0.95;
+        font-size: 16px;
+        font-weight: 600;
+        font-family: 'Inter', 'Segoe UI', sans-serif;
+        color: #FFFFFF !important;
     }
+    
+    /* Light Theme Search Box Input */
     div[data-baseweb="input"] {
-        background-color: #1E293B !important;
+        background-color: #FFFFFF !important;
         border-radius: 16px !important;
-        border: 1px solid #334155 !important;
+        border: 1px solid #CBD5E1 !important;
     }
     div[data-baseweb="input"] input {
-        color: #F8FAFC !important;
+        color: #0F172A !important;
     }
+    
+    /* Section Headers */
     .section-title {
         font-size: 13px;
         font-weight: 700;
         letter-spacing: 1px;
-        color: #64748B;
+        color: #059669 !important;
         text-transform: uppercase;
         margin: 25px 0 12px 0;
     }
-   .calc-card {
-        background-color: #FFFFFF !important;  /* Crisp white cards */
-        border: 1px solid #E2E8F0 !important;  /* Light, elegant border */
+    
+    /* Light Theme Crisp Grid Cards */
+    .calc-card {
+        background-color: #FFFFFF !important;
+        border: 1px solid #E2E8F0 !important;
         border-radius: 20px;
         padding: 22px;
         height: 140px;
         transition: all 0.25s ease;
         margin-bottom: 10px;
-    }
-    .calc-name {
-        font-size: 15px;
-        font-weight: 600;
-        color: #0F172A !important;             /* Deep slate text for the calculator names */
-        margin-bottom: 4px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
     }
     .calc-icon {
         font-size: 24px;
@@ -110,48 +111,58 @@ st.markdown("""
     .calc-name {
         font-size: 15px;
         font-weight: 600;
-        color: #F8FAFC;
+        color: #0F172A !important;
         margin-bottom: 4px;
     }
     .calc-desc {
         font-size: 12px;
         color: #64748B;
     }
+    
+    /* Input Container Panels for conversion widgets */
     .convert-section {
-        background-color: #131C2E;
+        background-color: #FFFFFF !important;
         border-radius: 20px;
         padding: 20px;
         margin-bottom: 20px;
-        border: 1px solid #1E293B;
+        border: 1px solid #E2E8F0 !important;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
     }
     .convert-header {
         font-size: 16px;
         font-weight: 600;
-        color: #F8FAFC;
+        color: #0F172A !important;
         margin-bottom: 15px;
     }
+    
+    /* Light App Buttons */
     .stButton > button {
         width: 100%;
-        background-color: #1E293B;
-        color: #E2E8F0;
-        border: 1px solid #334155;
+        background-color: #FFFFFF;
+        color: #0F172A;
+        border: 1px solid #CBD5E1;
         border-radius: 14px;
         padding: 10px;
         font-size: 15px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05);
     }
     .stButton > button:hover {
-        border-color: #38BDF8 !important;
-        color: #38BDF8 !important;
+        border-color: #059669 !important;
+        color: #059669 !important;
+        background-color: #F0FDF4 !important;
     }
+    
+    /* Bottom Layout Nav Container */
     .bottom-nav-container {
         position: fixed;
         bottom: 0;
         left: 0;
         right: 0;
-        background-color: #0F172A;
-        border-top: 1px solid #1E293B;
+        background-color: #FFFFFF;
+        border-top: 1px solid #E2E8F0;
         padding: 10px 0;
         z-index: 999;
+        box-shadow: 0 -4px 12px rgba(0,0,0,0.03);
     }
 </style>
 """, unsafe_allow_html=True)
